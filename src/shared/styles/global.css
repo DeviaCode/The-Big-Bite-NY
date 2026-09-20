@@ -80,6 +80,10 @@ body {
   }
 }
 
+body.products-page {
+  overflow: hidden;
+}
+
 @media (hover: hover) and (pointer: fine) {
   html,
   body {
@@ -105,4 +109,32 @@ img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation-name: page-transition-out;
+}
+
+::view-transition-new(root) {
+  animation-name: page-transition-in;
+}
+
+@keyframes page-transition-out {
+  to {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes page-transition-in {
+  from {
+    opacity: 0;
+    transform: scale(1.015);
+  }
 }

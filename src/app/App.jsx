@@ -1,16 +1,5 @@
-import { AnnouncementBar, Navbar, BenefitsMarquee, Footer, Hero, ProductIntro } from '../features/home/components'
+import { AppRoutes } from './AppRoutes'
 
 export const App = () => {
-  return (
-    <>
-      <AnnouncementBar />
-      <Navbar />
-      <BenefitsMarquee />
-      <Hero />
-      <ProductIntro />
-      {/* <OurProducts />
-      <CustomBox /> */}
-      <Footer />
-    </>
-  )
+  return <AppRoutes />
 }

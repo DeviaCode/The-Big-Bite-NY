@@ -1,4 +1,6 @@
 .customBox {
+    display: flex;
+    align-items: center;
     position: relative;
     z-index: 2;
     background-color: var(--color-bg);

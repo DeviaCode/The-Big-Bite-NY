@@ -3,7 +3,7 @@
     z-index: 2;
     width: 100%;
     overflow: hidden;
-    background-color: var(--color-accent-blue);
+    background-color: var(--color-primary);
     color: var(--color-white);
 }
 

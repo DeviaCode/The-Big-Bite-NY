@@ -1,0 +1,206 @@
+.aboutPage {
+    position: relative;
+    display: grid;
+    min-height: calc(100dvh - 7.5rem);
+    height: calc(100dvh - 7.5rem);
+    overflow: hidden;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.aboutContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem var(--spacing-lg) 8rem;
+    text-align: center;
+}
+
+.aboutCookie {
+    position: absolute;
+    z-index: 1;
+    width: clamp(12rem, 19vw, 28rem);
+    opacity: 0.58;
+    filter: drop-shadow(0 1.8rem 1.4rem rgba(0, 0, 0, 0.2));
+    pointer-events: none;
+}
+
+.aboutCookieTopLeft {
+    top: -5rem;
+    left: -5rem;
+    transform: rotate(-18deg);
+}
+
+.aboutCookieTopRight {
+    top: -4rem;
+    right: -4rem;
+    transform: rotate(16deg);
+}
+
+.aboutCookieBottomLeft {
+    bottom: -7rem;
+    left: 5%;
+    transform: rotate(12deg);
+}
+
+.aboutCookieBottomRight {
+    right: 4%;
+    bottom: -8rem;
+    transform: rotate(-14deg);
+}
+
+.aboutLogo {
+    position: absolute;
+    z-index: 0;
+    width: clamp(5rem, 10vw, 13rem);
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.aboutLogoTop {
+    top: 12%;
+    left: 42%;
+    transform: rotate(18deg);
+}
+
+.aboutLogoLeft {
+    top: 48%;
+    left: 8%;
+    width: clamp(7rem, 13vw, 17rem);
+    transform: rotate(-28deg);
+}
+
+.aboutLogoRight {
+    top: 38%;
+    right: 7%;
+    width: clamp(4rem, 8vw, 10rem);
+    transform: rotate(32deg);
+}
+
+.aboutLogoBottom {
+    right: 38%;
+    bottom: 7%;
+    width: clamp(6rem, 11vw, 14rem);
+    transform: rotate(-12deg);
+}
+
+.aboutShape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(105rem, 92vw);
+    height: min(105rem, 130vw);
+    border: 0.2rem solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-12deg);
+}
+
+.aboutShape::after {
+    position: absolute;
+    inset: 8%;
+    border: 0.2rem solid rgba(248, 247, 247, 0.24);
+    border-radius: 50%;
+    content: '';
+}
+
+.aboutEyebrow {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--fs-small);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.aboutTitle {
+    max-width: 14ch;
+    margin: 1.6rem 0 0;
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 8vw, 9rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+}
+
+.aboutTitle span {
+    display: block;
+    color: var(--color-primary);
+}
+
+.aboutLead {
+    max-width: 42ch;
+    margin: 2.4rem 0 0;
+    font-size: var(--fs-body);
+    line-height: 1.45;
+}
+
+.aboutStory {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 6vw, 8rem);
+    max-width: 90rem;
+    margin-top: 4rem;
+    padding-top: 2.4rem;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.3);
+}
+
+.aboutStory p {
+    max-width: 30ch;
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.45;
+}
+
+.aboutArrow {
+    position: absolute;
+    bottom: 2.2rem;
+    font-size: 3.5rem;
+    line-height: 1;
+    animation: about-arrow-bounce 2s ease-in-out infinite;
+}
+
+@keyframes about-arrow-bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(0.8rem);
+    }
+}
+
+@media (max-width: 819px) {
+    .aboutPage {
+        min-height: calc(100dvh - 6rem);
+        height: calc(100dvh - 6rem);
+    }
+
+    .aboutStory {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+        margin-top: 3rem;
+    }
+
+    .aboutCookie {
+        width: clamp(9rem, 25vw, 15rem);
+        opacity: 0.42;
+    }
+
+    .aboutCookieBottomLeft {
+        left: -3rem;
+    }
+
+    .aboutCookieBottomRight {
+        right: -3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aboutArrow {
+        animation: none;
+    }
+}

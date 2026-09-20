@@ -1,10 +1,18 @@
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
-export const Navbar = () => {
+const PRODUCT_COLOR_VARIABLES = {
+  chips: 'var(--flavor-chips)',
+  redVelvet: 'var(--flavor-red-velvet)',
+  brownie: 'var(--flavor-brownie)',
+  mandm: 'var(--flavor-mym)',
+}
+
+export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [darkSection, setDarkSection] = useState(false)
   const menuId = useId()
@@ -75,6 +83,21 @@ export const Navbar = () => {
     else setOpen(true)
   }
 
+  const navigateWithTransition = (event, path) => {
+    event.preventDefault()
+
+    if (document.startViewTransition) {
+      document.startViewTransition(() => navigate(path))
+      return
+    }
+
+    navigate(path)
+  }
+
+  const goHome = (event) => {
+    navigateWithTransition(event, '/')
+  }
+
   useLayoutEffect(() => {
     if (!open || !menuRef.current || !toggleRef.current) return undefined
 
@@ -109,9 +132,12 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className={`${styles.header} ${darkSection ? styles.headerDark : ''} ${open ? styles.headerOpen : ''}`}>
+      <header
+        className={`${styles.header} ${darkSection ? styles.headerDark : ''} ${productTheme ? styles.headerProduct : ''} ${contactPage ? styles.headerContact : ''} ${aboutPage ? styles.headerAbout : ''} ${open ? styles.headerOpen : ''}`}
+        style={productTheme ? { '--product-color': PRODUCT_COLOR_VARIABLES[productTheme] } : undefined}
+      >
         <div className={`${styles.bar} ${open ? styles.barOpen : ''}`}>
-          <Link to="/" className={`${styles.logoContainer} ${darkSection || open ? styles.logoContainerOpen : ''}`}>
+          <Link to="/" onClick={goHome} className={`${styles.logoContainer} ${darkSection || productTheme || contactPage || aboutPage || open ? styles.logoContainerOpen : ''}`}>
             <div>
               <span className={styles.logoText}>The Big Bite NY</span>
             </div>
@@ -120,7 +146,7 @@ export const Navbar = () => {
           <button
             type="button"
             ref={toggleRef}
-            className={`${styles.toggle} ${darkSection || open ? styles.toggleDark : ''} ${open ? styles.toggleOpen : ''}`}
+            className={`${styles.toggle} ${darkSection || productTheme || contactPage || aboutPage || open ? styles.toggleDark : ''} ${open ? styles.toggleOpen : ''}`}
             onClick={toggleMenu}
             aria-expanded={open}
             aria-controls={menuId}
@@ -142,28 +168,28 @@ export const Navbar = () => {
         >
           <a
             ref={(element) => { linksRef.current[0] = element }}
-            href="/"
+            href="/about-us"
             className={styles.menuLink}
-            onClick={closeMenu}
+            onClick={(event) => navigateWithTransition(event, '/about-us')}
           >
             About us
           </a>
-          <a
+          <Link
             ref={(element) => { linksRef.current[1] = element }}
-            href="/"
+            to="/products"
             className={styles.menuLink}
-            onClick={closeMenu}
+            onClick={(event) => navigateWithTransition(event, '/products')}
           >
             Our products
-          </a>
-          <a
+          </Link>
+          <Link
             ref={(element) => { linksRef.current[2] = element }}
-            href="/"
+            to="/contact-us"
             className={styles.menuLink}
-            onClick={closeMenu}
+            onClick={(event) => navigateWithTransition(event, '/contact-us')}
           >
             Contact us
-          </a>
+          </Link>
         </nav>
       </header>
 

@@ -1,0 +1,80 @@
+.pageTransition {
+    animation: page-fade-in 0.5s ease both;
+}
+
+.productsStage {
+    position: relative;
+    height: calc(100dvh - 7.5rem);
+    overflow: hidden;
+}
+
+.stageLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.stageLayerHidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.98);
+}
+
+.extras {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    overflow: hidden;
+    background-color: var(--color-white);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(2rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.extrasVisible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.extras :global(.customBox) {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.extras :global(.customBoxContainer) {
+    width: 100%;
+}
+
+@media (max-width: 819px) {
+    .productsStage {
+        height: calc(100dvh - 6rem);
+    }
+
+    .extras {
+        grid-template-rows: minmax(0, 1fr) auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pageTransition {
+        animation: none;
+    }
+}

@@ -3,6 +3,7 @@
   top: 0;
   z-index: 100;
   background-color: rgba(255, 255, 255, 0.9);
+  transition: background-color 0.55s ease;
 }
 
 .headerOpen {
@@ -11,6 +12,18 @@
 
 .headerDark {
   background-color: rgba(46, 31, 28, 0.92);
+}
+
+.headerProduct {
+  background-color: var(--product-color);
+}
+
+.headerContact {
+  background-color: var(--color-accent-blue);
+}
+
+.headerAbout {
+  background-color: var(--color-secondary);
 }
 
 .bar {
@@ -45,6 +58,18 @@
   color: var(--color-white);
 }
 
+.headerProduct .logoText {
+  color: var(--color-white);
+}
+
+.headerContact .logoText {
+  color: var(--color-white);
+}
+
+.headerAbout .logoText {
+  color: var(--color-white);
+}
+
 .logoText {
   font-family: var(--font-heading);
   font-size: clamp(2.6rem, 4vw, 4.2rem);
@@ -53,6 +78,7 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--color-primary);
+  transition: color 0.45s ease;
 }
 
 .logoContainerOpen .logoText {
@@ -68,9 +94,22 @@
   width: 100%;
   height: auto;
   display: block;
+  transition: filter 0.45s ease;
 }
 
 .headerDark .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.headerProduct .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.headerContact .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.headerAbout .logo img {
   filter: brightness(0) invert(1);
 }
 
@@ -137,6 +176,18 @@
 }
 
 .toggleDark {
+  color: var(--color-white);
+}
+
+.headerProduct .toggle {
+  color: var(--color-white);
+}
+
+.headerContact .toggle {
+  color: var(--color-white);
+}
+
+.headerAbout .toggle {
   color: var(--color-white);
 }
 
