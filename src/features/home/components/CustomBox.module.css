@@ -1,4 +1,6 @@
 .customBox {
+    position: relative;
+    z-index: 2;
     background-color: var(--color-bg);
     padding: var(--spacing-md) var(--spacing-lg);
 }
@@ -40,4 +42,20 @@
     line-height: 1.4;
     color: var(--color-primary);
     margin: 0;
+}
+
+@media (max-width: 819px) {
+    .customBoxContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .customBoxContent {
+        text-align: center;
+        align-items: center;
+    }
+
+    .customBoxImage {
+        max-width: 48rem;
+        margin: 0 auto;
+    }
 }

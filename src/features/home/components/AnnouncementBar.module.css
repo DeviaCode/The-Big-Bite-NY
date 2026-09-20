@@ -1,0 +1,15 @@
+.announcementBar {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    text-align: center;
+    padding: 1px 0;
+    font-size: var(--fs-small);
+    font-weight: bold;
+}
+
+.announcementText {
+    margin: 0.5rem;
+}

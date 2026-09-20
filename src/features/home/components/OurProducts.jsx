@@ -75,7 +75,7 @@ export const OurProducts = () => {
   return (
     <>
       {/* Revisar cómo usar un hook de react para ir mostrando los productos a medida de que se hace scroll - inspiración del sitio web */}
-      <section className={styles.ourProducts}>
+        <section id="products" className={styles.ourProducts}>
         <div className={styles.ourProductsContainer}>
           <h2 className={styles.ourProductsTitle}>Nuestros productos</h2>
         </div>

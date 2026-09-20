@@ -2,18 +2,22 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .headerOpen {
   background-color: transparent;
 }
 
+.headerDark {
+  background-color: rgba(46, 31, 28, 0.92);
+}
+
 .bar {
   position: relative;
-  z-index: 102;
+  z-index: 1002;
   margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +38,10 @@
 }
 
 .logoContainerOpen {
+  color: var(--color-white);
+}
+
+.headerDark .logoText {
   color: var(--color-white);
 }
 
@@ -60,6 +68,10 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.headerDark .logo img {
+  filter: brightness(0) invert(1);
 }
 
 .toggle {
@@ -124,6 +136,10 @@
   color: var(--color-white);
 }
 
+.toggleDark {
+  color: var(--color-white);
+}
+
 .toggle:hover,
 .toggle:focus-visible {
   color: var(--color-white);
@@ -140,7 +156,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 101;
+   z-index: 1001;
 
   display: flex;
   flex-direction: column;
@@ -186,7 +202,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 99;
   margin: 0;
   padding: 0;
   border: none;

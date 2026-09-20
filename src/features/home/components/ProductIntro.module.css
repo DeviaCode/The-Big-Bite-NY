@@ -1,0 +1,86 @@
+.valuePropsSection {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        transparent 0,
+        var(--color-primary) 16rem,
+        var(--color-primary) 100%
+    );
+    min-height: 100dvh;
+    padding: clamp(5rem, 10vw, 10rem) var(--spacing-lg);
+    display: flex;
+    align-items: center;
+}
+
+.valuePropsContainer {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.valuePropsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.valuePropsTitle {
+    margin: 0;
+    font-size: var(--fs-title);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+
+.valuePropsTitleHighlight {
+    display: block;
+    color: var(--color-secondary);
+}
+
+.valuePropsDescription {
+    margin: 2rem auto 0;
+    font-size: var(--fs-body);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 38ch;
+    color: var(--color-white);
+}
+
+.valuePropsButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.4rem;
+    padding: 1.2rem 2.4rem;
+    border: 0.2rem solid var(--flavor-brownie);
+    border-radius: var(--radius-lg);
+    background-color: var(--flavor-brownie);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--fs-small);
+    font-weight: 900;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.valuePropsButton:hover,
+.valuePropsButton:focus-visible {
+    background-color: var(--flavor-chips);
+    color: var(--flavor-brownie);
+    outline: none;
+    transform: translateY(-0.2rem);
+}
+
+/* DESKTOP */
+@media (min-width: 820px) {
+    .valuePropsDescription {
+        max-width: 42ch;
+    }
+}

@@ -12,6 +12,20 @@ export const Footer = () => {
             </p>
           </div>
 
+          <div className={styles.footerInfo}>
+            <a href="/" className={styles.footerPrivacyInfo}>
+              Privacy Policy 
+            </a>
+            <span className={styles.footerInfoSeparator}>|</span>
+            <a href="/" className={styles.footerNumberInfo}>
+              +57 123 456 7890
+            </a>
+            <span className={styles.footerInfoSeparator}>|</span>
+            <a href="/" className={styles.footerMailInfo}>
+              info@thebigbite.com
+            </a>
+          </div>
+
           <div className={styles.footerSocial}>
             <a href="/" className={styles.footerSocialLink}>
               <FaRegEnvelope />

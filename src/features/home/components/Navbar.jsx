@@ -6,6 +6,7 @@ import styles from './Navbar.module.css'
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false)
+  const [darkSection, setDarkSection] = useState(false)
   const menuId = useId()
   const toggleRef = useRef(null)
   const menuRef = useRef(null)
@@ -47,6 +48,28 @@ export const Navbar = () => {
     return () => document.body.classList.remove('overflow-hidden')
   }, [open])
 
+  useEffect(() => {
+    const updateTheme = () => {
+      const section = document.getElementById('product-intro')
+      const header = document.querySelector(`.${styles.header}`)
+
+      if (!section || !header) return
+
+      const sectionBounds = section.getBoundingClientRect()
+      const headerBottom = header.getBoundingClientRect().bottom
+      setDarkSection(sectionBounds.top <= headerBottom && sectionBounds.bottom > headerBottom)
+    }
+
+    updateTheme()
+    window.addEventListener('scroll', updateTheme, { passive: true })
+    window.addEventListener('resize', updateTheme)
+
+    return () => {
+      window.removeEventListener('scroll', updateTheme)
+      window.removeEventListener('resize', updateTheme)
+    }
+  }, [])
+
   const toggleMenu = () => {
     if (open) closeMenu()
     else setOpen(true)
@@ -86,12 +109,9 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className={`${styles.header} ${open ? styles.headerOpen : ''}`}>
+      <header className={`${styles.header} ${darkSection ? styles.headerDark : ''} ${open ? styles.headerOpen : ''}`}>
         <div className={`${styles.bar} ${open ? styles.barOpen : ''}`}>
-          <Link to="/" className={`${styles.logoContainer} ${open ? styles.logoContainerOpen : ''}`}>
-            {/* <div className={styles.logo}>
-              <img src={isotipoUrl} alt="The Big Bite NY" />
-            </div> */}
+          <Link to="/" className={`${styles.logoContainer} ${darkSection || open ? styles.logoContainerOpen : ''}`}>
             <div>
               <span className={styles.logoText}>The Big Bite NY</span>
             </div>
@@ -100,7 +120,7 @@ export const Navbar = () => {
           <button
             type="button"
             ref={toggleRef}
-            className={`${styles.toggle} ${open ? styles.toggleOpen : ''}`}
+            className={`${styles.toggle} ${darkSection || open ? styles.toggleDark : ''} ${open ? styles.toggleOpen : ''}`}
             onClick={toggleMenu}
             aria-expanded={open}
             aria-controls={menuId}

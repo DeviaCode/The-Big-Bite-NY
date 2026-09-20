@@ -1,3 +1,9 @@
+.ourProducts {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-white);
+}
+
 .ourProductsContainer{
     max-width: var(--container-width);
     margin: 0 auto;

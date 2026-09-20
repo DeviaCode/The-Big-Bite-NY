@@ -1,10 +1,13 @@
 .hero {
+    --hero-offset: 15rem;
+    position: relative;
+    z-index: 1;
     background-color: var(--color-white);
     width: 100%;
     max-width: none;
     margin: 0 auto;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: calc(100vh - var(--hero-offset));
+    height: calc(100dvh - var(--hero-offset));
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -13,10 +16,20 @@
 .heroContainer {
     position: relative;
     width: 100%;
-    min-height: clamp(48rem, calc(100dvh - 6rem), 78rem);
+    height: 100%;
     display: grid;
     place-items: center;
     overflow: hidden;
+}
+
+.heroBackground {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .heroContent {
@@ -24,121 +37,6 @@
     z-index: 2;
     max-width: 82rem;
     text-align: center;
-}
-
-.heroCookies {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.heroDetails {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.heroDetails img {
-    position: absolute;
-    width: clamp(2.8rem, 4vw, 5.2rem);
-    opacity: 0.16;
-}
-
-.detailTop {
-    top: 7%;
-    left: 37%;
-    transform: rotate(18deg);
-}
-
-.detailLeft {
-    top: 42%;
-    left: 3%;
-    width: clamp(3.6rem, 5vw, 6.5rem) !important;
-    transform: rotate(-24deg);
-}
-
-.detailRight {
-    top: 31%;
-    right: 5%;
-    transform: rotate(32deg);
-}
-
-.detailBottom {
-    right: 35%;
-    bottom: 6%;
-    width: clamp(2.4rem, 3.2vw, 4.2rem) !important;
-    transform: rotate(-12deg);
-}
-
-.detailTopRight {
-    top: 2%;
-    right: 34%;
-    width: clamp(2.2rem, 3vw, 3.8rem) !important;
-    transform: rotate(-18deg);
-}
-
-.detailFarLeft {
-    top: 71%;
-    left: -1%;
-    width: clamp(2.3rem, 3.4vw, 4.5rem) !important;
-    transform: rotate(42deg);
-}
-
-.detailFarRight {
-    top: 62%;
-    right: -1%;
-    width: clamp(3.2rem, 4.5vw, 5.8rem) !important;
-    transform: rotate(-35deg);
-}
-
-.detailBottomLeft {
-    bottom: 1%;
-    left: 39%;
-    width: clamp(2.6rem, 3.5vw, 4.5rem) !important;
-    transform: rotate(24deg);
-}
-
-.cookie {
-    position: absolute;
-    width: clamp(13rem, 16vw, 22rem);
-    filter: drop-shadow(0 1.8rem 1.2rem rgba(46, 31, 28, 0.2));
-    will-change: transform, opacity;
-}
-
-.cookie picture,
-.cookie img {
-    display: block;
-    width: 100%;
-}
-
-.cookieChips {
-    top: 14%;
-    left: 7%;
-    width: clamp(17rem, 21vw, 29rem);
-    transform: rotate(-13deg);
-}
-
-.cookieRed {
-    top: 5%;
-    right: 13%;
-    width: clamp(13rem, 17vw, 23rem);
-    transform: rotate(12deg);
-}
-
-.cookieBrownie {
-    bottom: 8%;
-    left: 18%;
-    width: clamp(14rem, 18vw, 25rem);
-    transform: rotate(9deg);
-}
-
-.cookieMAndM {
-    right: 4%;
-    bottom: 18%;
-    width: clamp(18rem, 22vw, 30rem);
-    transform: rotate(-10deg);
 }
 
 .heroSubtitle {
@@ -179,80 +77,16 @@
 }
 
 @media (max-width: 560px) {
+    .hero {
+        --hero-offset: 18rem;
+    }
+
     .heroContainer {
-        min-height: 58rem;
+        height: 100%;
     }
 
     .heroContent {
         max-width: 46rem;
-    }
-
-    .cookie {
-        width: clamp(9rem, 28vw, 13rem);
-    }
-
-    .cookieChips {
-        top: 4%;
-        left: -4%;
-    }
-
-    .cookieRed {
-        top: 12%;
-        right: -4%;
-    }
-
-    .cookieBrownie {
-        bottom: 3%;
-        left: -2%;
-    }
-
-    .cookieMAndM {
-        right: -2%;
-        bottom: 13%;
-    }
-
-    .heroDetails img {
-        width: 3rem;
-    }
-
-    .detailTop {
-        top: 10%;
-        left: 28%;
-    }
-
-    .detailLeft {
-        top: 35%;
-        left: 3%;
-    }
-
-    .detailRight {
-        top: 29%;
-        right: 3%;
-    }
-
-    .detailBottom {
-        right: 29%;
-        bottom: 5%;
-    }
-
-    .detailTopRight {
-        top: 6%;
-        right: 25%;
-    }
-
-    .detailFarLeft {
-        top: 67%;
-        left: -3%;
-    }
-
-    .detailFarRight {
-        top: 57%;
-        right: -3%;
-    }
-
-    .detailBottomLeft {
-        bottom: 1%;
-        left: 40%;
     }
 
     .heroTitle {
@@ -263,10 +97,3 @@
         max-width: 26ch;
     }
 }
-
-/* DESKTOP */
-/* @media (min-width: 820px) {
-    .heroContainer {
-        padding: var(--spacing-xl) var(--spacing-lg);
-    }
-} */

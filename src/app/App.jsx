@@ -1,13 +1,15 @@
-import { Navbar, Footer, Hero, ValueProps, OurProducts, CustomBox } from '../features/home/components'
+import { AnnouncementBar, Navbar, BenefitsMarquee, Footer, Hero, ProductIntro } from '../features/home/components'
 
 export const App = () => {
   return (
     <>
+      <AnnouncementBar />
       <Navbar />
+      <BenefitsMarquee />
       <Hero />
-      <ValueProps />
-      <OurProducts />
-      <CustomBox />
+      <ProductIntro />
+      {/* <OurProducts />
+      <CustomBox /> */}
       <Footer />
     </>
   )

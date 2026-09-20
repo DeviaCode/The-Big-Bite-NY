@@ -1,4 +1,7 @@
 .footer {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-white);
     color: var(--color-primary);
     padding: var(--spacing-md) var(--spacing-lg);
 }
@@ -7,6 +10,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-xl);
+    margin: 0 auto;
+}
+
+.footerInfo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: var(--fs-body);
+    text-decoration: none;
+}
+
+.footerInfo a {
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
 .footerPhrase {
@@ -51,4 +69,15 @@
 .footerSocialLink:hover {
     background-color: var(--color-primary);
     color: var(--color-white);
+}
+
+@media (max-width: 819px) {
+    .footerContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footerSocial {
+        align-self: center;
+    }
 }

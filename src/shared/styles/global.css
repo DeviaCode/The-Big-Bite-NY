@@ -80,6 +80,21 @@ body {
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: url('/cursor-arrow.svg') 5 4, auto;
+  }
+
+  a,
+  button,
+  [role='button'],
+  input[type='submit'],
+  input[type='button'] {
+    cursor: url('/cursor-hand.svg') 12 2, pointer !important;
+  }
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   letter-spacing: -0.8px;
