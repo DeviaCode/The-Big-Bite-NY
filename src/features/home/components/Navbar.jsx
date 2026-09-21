@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
+import { useLanguage } from '../../../shared/i18n/LanguageContext'
 
 const PRODUCT_COLOR_VARIABLES = {
   chips: 'var(--flavor-chips)',
@@ -13,6 +14,7 @@ const PRODUCT_COLOR_VARIABLES = {
 
 export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
   const navigate = useNavigate()
+  const { language, t, toggleLanguage } = useLanguage()
   const [open, setOpen] = useState(false)
   const [darkSection, setDarkSection] = useState(false)
   const menuId = useId()
@@ -143,20 +145,31 @@ export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
             </div>
           </Link>
 
-          <button
-            type="button"
-            ref={toggleRef}
-            className={`${styles.toggle} ${darkSection || productTheme || contactPage || aboutPage || open ? styles.toggleDark : ''} ${open ? styles.toggleOpen : ''}`}
-            onClick={toggleMenu}
-            aria-expanded={open}
-            aria-controls={menuId}
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-          >
-            <span className={styles.toggleIcon} aria-hidden="true">
-              <FaBars className={styles.menuIcon} />
-              <FaTimes className={styles.closeIcon} />
-            </span>
-          </button>
+          <div className={styles.actions}>
+            <button
+              className={styles.languageToggle}
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={t.nav.language}
+            >
+              {language.toUpperCase()}
+            </button>
+
+            <button
+              type="button"
+              ref={toggleRef}
+              className={`${styles.toggle} ${darkSection || productTheme || contactPage || aboutPage || open ? styles.toggleDark : ''} ${open ? styles.toggleOpen : ''}`}
+              onClick={toggleMenu}
+              aria-expanded={open}
+              aria-controls={menuId}
+              aria-label={open ? t.nav.close : t.nav.open}
+            >
+              <span className={styles.toggleIcon} aria-hidden="true">
+                <FaBars className={styles.menuIcon} />
+                <FaTimes className={styles.closeIcon} />
+              </span>
+            </button>
+          </div>
         </div>
 
         <nav
@@ -172,7 +185,7 @@ export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
             className={styles.menuLink}
             onClick={(event) => navigateWithTransition(event, '/about-us')}
           >
-            About us
+            {t.nav.about}
           </a>
           <Link
             ref={(element) => { linksRef.current[1] = element }}
@@ -180,7 +193,7 @@ export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
             className={styles.menuLink}
             onClick={(event) => navigateWithTransition(event, '/products')}
           >
-            Our products
+            {t.nav.products}
           </Link>
           <Link
             ref={(element) => { linksRef.current[2] = element }}
@@ -188,7 +201,7 @@ export const Navbar = ({ aboutPage, contactPage, productTheme }) => {
             className={styles.menuLink}
             onClick={(event) => navigateWithTransition(event, '/contact-us')}
           >
-            Contact us
+            {t.nav.contact}
           </Link>
         </nav>
       </header>

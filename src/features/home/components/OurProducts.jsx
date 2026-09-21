@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './OurProducts.module.css'
+import { useLanguage } from '../../../shared/i18n/LanguageContext'
 
 import chipsCookieAvif from '../../../shared/assets/images/chips.avif'
 import chipsCookieWebp from '../../../shared/assets/images/chips.webp'
@@ -57,8 +58,10 @@ const themeClassMap = {
 }
 
 export const OurProducts = ({ onComplete, onThemeChange }) => {
+  const { t } = useLanguage()
   const [activeIndex, setActiveIndex] = useState(0)
   const product = PRODUCTS[activeIndex]
+  const productCopy = t.products[activeIndex]
 
   useEffect(() => {
     onThemeChange?.(product.theme)
@@ -82,15 +85,15 @@ export const OurProducts = ({ onComplete, onThemeChange }) => {
           <picture>
             <source srcSet={product.image.avif} type="image/avif" />
             <source srcSet={product.image.webp} type="image/webp" />
-            <img src={product.image.png} alt={product.alt} />
+            <img src={product.image.png} alt={productCopy.alt} />
           </picture>
         </div>
 
         <div className={styles.ourProductsItemContent}>
-          <p className={styles.ourProductsEyebrow}>Nuestros productos</p>
-          <h2 className={styles.ourProductsItemTitle}>{product.title}</h2>
-          <h3 className={styles.ourProductsItemSubtitle}>{product.subtitle}</h3>
-          <p className={styles.ourProductsItemDescription}>{product.description}</p>
+          <p className={styles.ourProductsEyebrow}>{t.productsLabel}</p>
+          <h2 className={styles.ourProductsItemTitle}>{productCopy.title}</h2>
+          <h3 className={styles.ourProductsItemSubtitle}>{productCopy.subtitle}</h3>
+          <p className={styles.ourProductsItemDescription}>{productCopy.description}</p>
         </div>
       </article>
 
@@ -98,7 +101,7 @@ export const OurProducts = ({ onComplete, onThemeChange }) => {
         className={styles.ourProductsNext}
         type="button"
         onClick={showNextProduct}
-        aria-label="Ver siguiente producto"
+        aria-label={t.nextProduct}
       >
         <span aria-hidden="true">↓</span>
       </button>

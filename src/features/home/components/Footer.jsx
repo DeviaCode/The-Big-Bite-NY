@@ -1,14 +1,16 @@
 import { FaFacebookF, FaInstagram, FaRegEnvelope } from 'react-icons/fa';
 import styles from './Footer.module.css'
+import { useLanguage } from '../../../shared/i18n/LanguageContext'
 
 export const Footer = () => {
+  const { t } = useLanguage()
   return (
     <>
       <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           <div className={styles.footerPhrase}>
             <p className={styles.footerPhraseText}>
-              La vida es corta. <span className={styles.footerPhraseTextHighlight}>Cómete una galleta.</span>
+              {t.footer.phrase} <span className={styles.footerPhraseTextHighlight}>{t.footer.highlight}</span>
             </p>
           </div>
 

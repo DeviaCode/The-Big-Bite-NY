@@ -1,9 +1,11 @@
 import styles from './AnnouncementBar.module.css';
+import { useLanguage } from '../../../shared/i18n/LanguageContext'
 export const AnnouncementBar = () => {
+    const { t } = useLanguage()
     return (
         <>
             <div className={styles.announcementBar}>
-                <p className={styles.announcementText}>¡Bienvenido a The Big Bite NY! Disfruta de nuestras deliciosas galletas estilo New York.</p>
+                <p className={styles.announcementText}>{t.announcement}</p>
             </div>
         </>
     )

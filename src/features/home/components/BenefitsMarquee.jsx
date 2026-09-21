@@ -1,12 +1,9 @@
 import styles from './BenefitsMarquee.module.css'
+import { useLanguage } from '../../../shared/i18n/LanguageContext'
 
 export const BenefitsMarquee = () => {
-  const benefits = [
-    'Recién horneadas',
-    'Grandes y masticables',
-    'Ingredientes premium',
-    'Hechas con amor',
-  ]
+  const { t } = useLanguage()
+  const benefits = t.benefits
 
   const items = Array.from({ length: 4 }, (_, groupIndex) => (
     <div className={styles.marqueeGroup} key={groupIndex} aria-hidden={groupIndex === 1}>

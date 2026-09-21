@@ -6,6 +6,12 @@
   transition: background-color 0.55s ease;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
 .headerOpen {
   background-color: transparent;
 }
@@ -200,6 +206,36 @@
   transform: scale(1.15);
 }
 
+.languageToggle {
+  position: relative;
+  z-index: 1002;
+  padding: 0.6rem 0.8rem;
+  border: 0.15rem solid currentColor;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  transition: background-color 0.2s ease, color 0.45s ease, border-color 0.45s ease;
+  cursor: pointer;
+}
+
+.headerDark .languageToggle,
+.headerProduct .languageToggle,
+.headerContact .languageToggle,
+.headerAbout .languageToggle,
+.headerOpen .languageToggle {
+  color: var(--color-white);
+}
+
+.languageToggle:hover,
+.languageToggle:focus-visible {
+  background-color: var(--color-accent-red);
+  color: var(--color-white);
+  outline: none;
+}
+
 /* Panel a pantalla completa debajo de la barra (altura = viewport − barra) */
 .menu {
   position: fixed;
@@ -207,7 +243,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-   z-index: 1001;
+  z-index: 1001;
 
   display: flex;
   flex-direction: column;
